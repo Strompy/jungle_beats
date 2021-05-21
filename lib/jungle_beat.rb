@@ -20,6 +20,6 @@ class JungleBeat
   end
 
   def play
-    `say -r 500 -v Boing #{list.to_string}`
+    `say -r 400 -v Boing #{list.to_string}`
   end
 end
