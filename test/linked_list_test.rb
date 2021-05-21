@@ -26,19 +26,22 @@ class LinkedListTest < Minitest::Test
     assert_equal 1, list.count
     assert_equal 'doop', list.to_string
   end
+
+  def test_it_can_append_multiple
+    list = LinkedList.new
+    list.append('doop')
+    node = list.head
+
+    assert_equal 'doop', node.data
+    assert_nil node.next_node
+    assert_nil list.head.next_node
+    assert_equal 1, list.count
+    assert_equal 'doop', list.to_string
+
+    list.append('deep')
+    node_2 = list.head.next_node
+    assert_instance_of Node, node_2
+    assert_equal 2, list.count
+    assert_equal 'doop deep', list.to_string
+  end
 end
-
-
-
-# > list.head
-# => nil
-# > list.append("doop")
-# => "doop"
-# > list
-# => <LinkedList head=<Node data="doop" next_node=nil #5678904567890> #45678904567>
-# > list.head.next_node
-# => nil
-# > list.count
-# => 1
-# > list.to_string
-# => "doop"
