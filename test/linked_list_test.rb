@@ -12,7 +12,7 @@ class LinkedListTest < Minitest::Test
   def test_it_has_attributes
     list = LinkedList.new
 
-    assert_equal nil, list.head
+    assert_nil list.head
   end
 
   def test_it_can_append
@@ -43,5 +43,30 @@ class LinkedListTest < Minitest::Test
     assert_instance_of Node, node_2
     assert_equal 2, list.count
     assert_equal 'doop deep', list.to_string
+  end
+
+  def test_it_can_prepend
+    list = LinkedList.new
+    list.append('plop')
+    node = list.head
+
+    assert_equal 'plop', node.data
+    assert_equal 'plop', list.to_string
+
+    list.append("suu")
+    list.prepend("dop")
+    assert_equal "dop plop suu", list.to_string
+    assert_equal 3, list.count
+  end
+
+  def test_it_can_insert
+    list = LinkedList.new
+    list.append('plop')
+    list.append("suu")
+    list.prepend("dop")
+
+    list.insert(1, "woo")
+
+    assert_equal "dop woo plop suu", list.to_string
   end
 end
